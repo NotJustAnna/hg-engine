@@ -1,11 +1,11 @@
 package xyz.cuteclouds.hunger.phases
 
-import xyz.cuteclouds.hunger.game.Tribute
 import xyz.cuteclouds.hunger.game.Game
 import xyz.cuteclouds.hunger.game.Phase
+import xyz.cuteclouds.hunger.game.Tribute
 
 class FallenTributes(
-    private val game: Game,
+    override val game: Game,
     val number: Int,
     val tributes: List<Tribute>,
     val fallenTributes: List<Tribute>

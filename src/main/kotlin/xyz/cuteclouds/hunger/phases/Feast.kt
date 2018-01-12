@@ -1,14 +1,14 @@
 package xyz.cuteclouds.hunger.phases
 
-import xyz.cuteclouds.hunger.game.Tribute
-import xyz.cuteclouds.hunger.game.Event
 import xyz.cuteclouds.hunger.events.Events
 import xyz.cuteclouds.hunger.events.TributePool
+import xyz.cuteclouds.hunger.game.Event
 import xyz.cuteclouds.hunger.game.Game
 import xyz.cuteclouds.hunger.game.Phase
+import xyz.cuteclouds.hunger.game.Tribute
 
 class Feast(
-    private val game: Game,
+    override val game: Game,
     val number: Int,
     val events: List<Event>,
     private val tributes: List<Tribute>,

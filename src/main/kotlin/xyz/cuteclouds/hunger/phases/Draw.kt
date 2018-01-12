@@ -4,7 +4,7 @@ import xyz.cuteclouds.hunger.game.Game
 import xyz.cuteclouds.hunger.game.Phase
 
 class Draw(
-    val game: Game,
+    override val game: Game,
     val number: Int
 ) : Phase() {
     override fun hasNext() = false

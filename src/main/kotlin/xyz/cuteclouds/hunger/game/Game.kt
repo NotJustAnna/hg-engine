@@ -9,6 +9,10 @@ data class Game(
     val threshold: Double,
     val random: Random
 ) {
+    init {
+        check(threshold > 0 && threshold < 1) { "Threshold needs to be between 0 and 1." }
+    }
+
     val deathList = LinkedList<Tribute>()
     val thresholdSqrt = Math.floor(sqrt(threshold) * 10.0) / 10.0
 }

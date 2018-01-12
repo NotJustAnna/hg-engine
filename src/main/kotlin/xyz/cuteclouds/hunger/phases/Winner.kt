@@ -1,11 +1,11 @@
 package xyz.cuteclouds.hunger.phases
 
-import xyz.cuteclouds.hunger.game.Tribute
 import xyz.cuteclouds.hunger.game.Game
 import xyz.cuteclouds.hunger.game.Phase
+import xyz.cuteclouds.hunger.game.Tribute
 
 class Winner(
-    val game: Game,
+    override val game: Game,
     val winner: Tribute,
     val number: Int
 ) : Phase() {

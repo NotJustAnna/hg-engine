@@ -1,10 +1,10 @@
 package xyz.cuteclouds.hunger;
 
+import xyz.cuteclouds.hunger.data.SimpleTribute;
+import xyz.cuteclouds.hunger.game.Actions;
 import xyz.cuteclouds.hunger.game.HarmfulAction;
 import xyz.cuteclouds.hunger.game.HarmlessAction;
-import xyz.cuteclouds.hunger.data.SimpleTribute;
 import xyz.cuteclouds.hunger.game.Tribute;
-import xyz.cuteclouds.hunger.game.Actions;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -68,14 +68,14 @@ public class HungerGamesBuilder {
         return new HungerGames(
             tributes,
             new Actions(
-                bloodbathHarmlessActions,
-                bloodbathHarmfulActions,
-                dayHarmlessActions,
-                dayHarmfulActions,
-                nightHarmlessActions,
-                nightHarmfulActions,
-                feastHarmlessActions,
-                feastHarmfulActions
+                Objects.requireNonNull(bloodbathHarmlessActions, "bloodbathHarmlessActions"),
+                Objects.requireNonNull(bloodbathHarmfulActions, "bloodbathHarmfulActions"),
+                Objects.requireNonNull(dayHarmlessActions, "dayHarmlessActions"),
+                Objects.requireNonNull(dayHarmfulActions, "dayHarmfulActions"),
+                Objects.requireNonNull(nightHarmlessActions, "nightHarmlessActions"),
+                Objects.requireNonNull(nightHarmfulActions, "nightHarmfulActions"),
+                Objects.requireNonNull(feastHarmlessActions, "feastHarmlessActions"),
+                Objects.requireNonNull(feastHarmfulActions, "feastHarmfulActions")
             ),
             threshold,
             random == null ? new Random() : random
