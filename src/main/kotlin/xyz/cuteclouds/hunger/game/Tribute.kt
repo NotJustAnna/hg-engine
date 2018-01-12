@@ -1,4 +1,4 @@
-package xyz.cuteclouds.hunger.data
+package xyz.cuteclouds.hunger.game
 
 abstract class Tribute {
     abstract val name: String
@@ -10,8 +10,3 @@ abstract class Tribute {
     abstract fun copy() : Tribute
 }
 
-data class SimpleTribute(
-    override val name: String
-) : Tribute() {
-    override fun copy(): Tribute = SimpleTribute(name)
-}

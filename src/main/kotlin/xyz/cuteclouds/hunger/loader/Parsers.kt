@@ -1,6 +1,10 @@
 package xyz.cuteclouds.hunger.loader
 
 import xyz.cuteclouds.hunger.data.*
+import xyz.cuteclouds.hunger.game.Effect
+import xyz.cuteclouds.hunger.game.HarmfulAction
+import xyz.cuteclouds.hunger.game.HarmlessAction
+import xyz.cuteclouds.hunger.game.Tribute
 import xyz.cuteclouds.utils.args.ArgParser
 import xyz.cuteclouds.utils.args.ParserOptions.NO_IMPLICIT_TUPLES
 import xyz.cuteclouds.utils.args.ParserOptions.NO_SMART_TUPLES

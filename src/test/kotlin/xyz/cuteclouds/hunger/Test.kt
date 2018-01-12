@@ -1,7 +1,7 @@
 package xyz.cuteclouds.hunger
 
-import xyz.cuteclouds.hunger.data.HarmfulAction
-import xyz.cuteclouds.hunger.data.HarmlessAction
+import xyz.cuteclouds.hunger.game.HarmfulAction
+import xyz.cuteclouds.hunger.game.HarmlessAction
 import xyz.cuteclouds.hunger.events.EventFormatter
 import xyz.cuteclouds.hunger.loader.loadFile
 import xyz.cuteclouds.hunger.loader.parseHarmfulActions

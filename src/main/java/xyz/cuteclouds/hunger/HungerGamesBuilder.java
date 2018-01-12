@@ -1,11 +1,10 @@
 package xyz.cuteclouds.hunger;
 
-import xyz.cuteclouds.hunger.data.HarmfulAction;
-import xyz.cuteclouds.hunger.data.HarmlessAction;
+import xyz.cuteclouds.hunger.game.HarmfulAction;
+import xyz.cuteclouds.hunger.game.HarmlessAction;
 import xyz.cuteclouds.hunger.data.SimpleTribute;
-import xyz.cuteclouds.hunger.data.Tribute;
-import xyz.cuteclouds.hunger.phases.Actions;
-import xyz.cuteclouds.hunger.phases.HungerGames;
+import xyz.cuteclouds.hunger.game.Tribute;
+import xyz.cuteclouds.hunger.game.Actions;
 
 import java.util.*;
 import java.util.stream.Collectors;

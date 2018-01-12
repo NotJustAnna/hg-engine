@@ -1,6 +1,6 @@
 package xyz.cuteclouds.hunger.events
 
-import xyz.cuteclouds.hunger.data.Tribute
+import xyz.cuteclouds.hunger.game.Tribute
 import java.util.*
 
 class TributePool(tributes: List<Tribute>, private val r: Random = Random()) {
