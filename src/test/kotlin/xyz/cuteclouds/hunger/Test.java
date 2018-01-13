@@ -6,8 +6,9 @@ import xyz.cuteclouds.hunger.phases.*;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import static xyz.cuteclouds.hunger.loader.ParsersKt.*;
 
@@ -31,18 +32,21 @@ public class Test {
                 harmfulActions("game/events/feast_harmful.txt")
             )
             .addTributes(
-                IntStream.range(0, 24).mapToObj(i -> "Tribute " + i).toArray(String[]::new)
+                "AdrianTodt", "Dust", "Slya", "Cherry", "White", "D4rk", "Fabri", "Steven", "Aluca", "Checkium",
+                "Esdrico", "GeeLeonidas", "Henry", "LorenzoDCC", "LoneFolf", "Lun", "Lux", "Steffanie", "Gaster", "Darius"
             )
-            .threshold(0.7)
+            .threshold(0.9)
             .build();
 
         EventFormatter formatter = new EventFormatter(
-            it -> it.getName() + (it.getKills() == 0 ? "" : it.getKills() == 1 ? " (1 kill)" : " (" + it.getKills() + " kills)")
-        );
+            it -> "**" + it.getName() + "** ``(" + (it.getKills() == 1 ? "1 kill" : it.getKills() + " kills") + ")``");
 
         long time = -System.currentTimeMillis();
 
+        List<Tribute> fallens = new LinkedList<>();
+
         for (Phase p : hungerGames.newGame()) {
+
             if (p instanceof Bloodbath) {
                 Bloodbath e = (Bloodbath) p;
 
@@ -75,6 +79,8 @@ public class Test {
                 println("=-=- Fallen Tributes -=-=");
                 List<Tribute> fallenTributes = e.getFallenTributes();
 
+                fallens.addAll(fallenTributes);
+
                 println(fallenTributes.size() + " cannon shots can be heard in the distance.");
 
                 for (Tribute tribute : fallenTributes) {
@@ -103,7 +109,7 @@ public class Test {
             if (p instanceof Feast) {
                 Feast e = (Feast) p;
 
-                println("=-=- Feast (Day " + e.getNumber() + " -=-=");
+                println("=-=- Feast (Day " + e.getNumber() + ") -=-=");
 
                 for (Event event : e.getEvents()) {
                     println(event.format(formatter));
@@ -121,6 +127,42 @@ public class Test {
                 println(formatter.format("{0} is the winner!", listOf(e.getWinner())));
                 println();
 
+                println("=-=- Ranking: Survival -=-=");
+
+                int x = fallens.size() + 1;
+                String formatString = "%0" + (x <= 9 ? 1 : x <= 99 ? 2 : x <= 999 ? 3 : x <= 9999 ? 4 : 5) + "d - %s";
+
+                println(String.format(formatString, 1, e.getWinner().format(formatter)));
+
+                Collections.reverse(fallens);
+
+                {
+                    int i = 1;
+                    for (Tribute fallen : fallens) {
+                        i++;
+
+                        println(String.format(formatString, i, fallen.format(formatter)));
+                    }
+                }
+
+                println();
+
+                println("=-=- Ranking: Kills -=-=");
+
+                List<Tribute> killers = new LinkedList<>(e.getGame().getTributes());
+                killers.sort(Comparator.comparingInt(Tribute::getKills).reversed());
+
+                {
+                    int i = 0;
+                    for (Tribute tribute : killers) {
+                        i++;
+
+                        println(String.format(formatString, i, tribute.format(formatter)));
+                    }
+                }
+
+                println();
+
                 continue;
             }
 
@@ -129,6 +171,39 @@ public class Test {
 
                 println("=-=- Draw! -=-=");
                 println("Everyone is dead. No winners.");
+                println();
+
+                int x = fallens.size() + 1;
+                String formatString = "%0" + (x <= 9 ? 1 : x <= 99 ? 2 : x <= 999 ? 3 : x <= 9999 ? 4 : 5) + "d - %s";
+
+                Collections.reverse(fallens);
+
+                {
+                    int i = 0;
+                    for (Tribute fallen : fallens) {
+                        i++;
+
+                        println(String.format(formatString, i, fallen.format(formatter)));
+                    }
+                }
+
+                println();
+
+                println("=-=- Ranking: Kills -=-=");
+
+                List<Tribute> killers = new LinkedList<>(e.getGame().getTributes());
+
+                killers.sort(Comparator.comparingInt(Tribute::getKills).reversed());
+
+                {
+                    int i = 0;
+                    for (Tribute tribute : killers) {
+                        i++;
+
+                        println(String.format(formatString, i, tribute.format(formatter)));
+                    }
+                }
+
                 println();
 
                 continue;

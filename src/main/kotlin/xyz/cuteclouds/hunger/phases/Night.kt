@@ -25,7 +25,7 @@ class Night(
                 TributePool(tributes),
                 game.actions.nightHarmless,
                 game.actions.nightHarmful,
-                game.threshold,
+                game.getThresholdUp(tributes),
                 game.random
             )
 

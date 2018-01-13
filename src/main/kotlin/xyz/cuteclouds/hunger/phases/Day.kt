@@ -21,7 +21,7 @@ class Day(
         fun generate(game: Game, number: Int, tributes: List<Tribute>, alreadyDead: List<Tribute>, wasFeast: Boolean = false): Phase {
             if (tributes.size <= 1) return FallenTributes(game, number, tributes, alreadyDead)
 
-            if (!wasFeast && number > 2 && number % 2 == 0 && game.random.nextDouble() < game.thresholdSqrt) {
+            if (!wasFeast && number > 2 && number % 2 == 0 && game.random.nextDouble() < game.getThresholdDown(tributes)) {
                 return Feast.generate(game, number, tributes, alreadyDead)
             }
 
@@ -29,14 +29,14 @@ class Day(
                 TributePool(tributes),
                 game.actions.dayHarmless,
                 game.actions.dayHarmful,
-                game.threshold,
+                game.getThresholdUp(tributes),
                 game.random
             )
 
             val (alive, fallenTributes) = Events.compute(events)
             game.deathList += fallenTributes
 
-            return Day(game, number + 1, events, alive, arrayListOf(alreadyDead, fallenTributes).flatten())
+            return Day(game, if (wasFeast) number else number + 1, events, alive, arrayListOf(alreadyDead, fallenTributes).flatten())
         }
 
     }

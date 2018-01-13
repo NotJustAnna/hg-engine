@@ -22,7 +22,7 @@ data class Bloodbath(
                 TributePool(game.tributes),
                 game.actions.bloodbathHarmless,
                 game.actions.bloodbathHarmful,
-                game.thresholdSqrt,
+                game.getThresholdUp(game.tributes),
                 game.random
             )
 

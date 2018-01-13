@@ -20,7 +20,7 @@ amount: 2, action: "{0} bashes {1}'s head in with a mace.", killed:(T1), killers
 amount: 2, action: "{0} pushes {1} off a cliff during a knife fight.", killed: (T1), killers: (T0)
 amount: 2, action: "{0} throws a knife into {1}'s chest.", killed: (T1), killers: (T0)
 amount: 2, action: "{0}'s trap kills {1}.", killed: (T1), killers: (T0)
-amount: 2, action: "{0} is unable to convince {1} to not kill them.", killed: (T1), killers: (T0)
+amount: 2, action: "{0} is unable to convince {1} to not kill them.", killed: (T0), killers: (T1)
 amount: 3, action: "{0} convinces {1} to not kill them, only to kill {2} instead.", killed: (T2), killers: (T0)
 amount: 1, action: "{0} falls into a frozen lake and drowns.", killed: (T0), killers: ()
 amount: 3, action: "{0}, {1}, and {2} start fighting, but {1} runs away as {0} kills {2}.", killed: (T0), killers: (T2)
