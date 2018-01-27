@@ -10,7 +10,7 @@ buildscript {
 
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.2.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.2.20'
     id 'maven'
     id 'maven-publish'
     id 'com.jfrog.bintray' version '1.7.2'
@@ -20,7 +20,7 @@ plugins {
 apply plugin: "org.jetbrains.dokka"
 
 group 'xyz.cuteclouds'
-version '1.0.1'
+version '1.0.2'
 
 repositories {
     jcenter()
@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8:1.2.10'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.20'
     compile 'xyz.cuteclouds:CloudyUtils:1.0'
 }
 

@@ -7,13 +7,12 @@ import xyz.cuteclouds.hunger.game.Game
 import xyz.cuteclouds.hunger.game.Phase
 import xyz.cuteclouds.hunger.game.Tribute
 
-data class Bloodbath(
+class Bloodbath(
     override val game: Game,
     val events: List<Event>,
     private val tributes: List<Tribute>,
     private val fallenTributes: List<Tribute>
 ) : Phase() {
-
     override fun next() = Day.generate(game, 0, tributes, fallenTributes)
 
     companion object {
@@ -22,7 +21,7 @@ data class Bloodbath(
                 TributePool(game.tributes),
                 game.actions.bloodbathHarmless,
                 game.actions.bloodbathHarmful,
-                game.getThresholdUp(game.tributes),
+                game.getThresholdUp(game.tributes, 0),
                 game.random
             )
 

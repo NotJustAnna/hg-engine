@@ -25,7 +25,7 @@ class Feast(
                 TributePool(tributes),
                 game.actions.feastHarmless,
                 game.actions.feastHarmful,
-                game.getThresholdUp(tributes),
+                game.getThresholdUp(tributes, number),
                 game.random
             )
 
