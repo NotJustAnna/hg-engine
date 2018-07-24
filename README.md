@@ -4,15 +4,15 @@ A Hunger Games Simulator Engine made in **Kotlin**.
 
 ## How to use
 
-1. Create an instance of `xyz.cuteclouds.hunger.HungerGamesBuilder` and configurate the match.
+1. Create an instance of `pw.aru.hungergames.HungerGamesBuilder` and configurate the match.
 
 ```kotlin
-val hungerGames: HungerGames = xyz.cuteclouds.hunger.HungerGamesBuilder()
+val hungerGames: HungerGames = pw.aru.hungergames.HungerGamesBuilder()
     ...
     .build()
 ```
 
-Look at ``src/test/kotlin/xyz/cuteclouds/hunger/Test.kt`` for a better example.
+Look at ``src/test/kotlin/pw/aru/hungergames/Test.kt`` for a better example.
 
 2. Start a new match.
 

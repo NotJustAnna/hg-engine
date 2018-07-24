@@ -1,36 +1,29 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.15"
-    }
-}
-
 plugins {
-    id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.2.20'
+    id 'org.jetbrains.kotlin.jvm' version '1.2.51'
     id 'maven'
     id 'maven-publish'
     id 'com.jfrog.bintray' version '1.7.2'
-    id 'com.github.johnrengelman.shadow' version '2.0.2'
+    id 'org.jetbrains.dokka' version '0.9.17'
 }
 
-apply plugin: "org.jetbrains.dokka"
+group = 'pw.aru.hungergames'
+version = '1.0'
 
-group 'xyz.cuteclouds'
-version '1.0.2'
+// Minified Splash
+({ String l, String v ->
+    def d = "$l ${(v.size() + l.size() + 1) % 2 != 0 ? "-" : "--"} v$v"
+    def w = (0..(30 - d.size() / 2)).collect { it % 2 != 0 ? '-' : '=' }.join ''
+    println "|$w| $d |${w.reverse()}|"
+})("Aru HG-Engine Library", version)
 
 repositories {
     jcenter()
-    mavenLocal()
-    //mavenCentral()
+    maven { url = 'https://dl.bintray.com/adriantodt/maven' }
 }
 
 dependencies {
-    compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.20'
-    compile 'xyz.cuteclouds:CloudyUtils:1.0'
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    testCompile 'pw.aru.hungergames:hg-tuples:1.0'
 }
 
 compileKotlin {
@@ -38,16 +31,6 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
-}
-
-
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.4.1'
-}
-
-task clearSpecific(type: Delete) {
-    delete 'build/javadoc'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -74,17 +57,13 @@ jar {
     baseName = project.name
 }
 
-shadowJar {
-    classifier = 'withDependencies'
-}
-
 dokka {
     outputFormat = 'html'
     outputDirectory = "$buildDir/dokka"
 }
 
 artifacts {
-    archives shadowJar, javadocJar, sourcesJar, docsZip
+    archives javadocJar, sourcesJar, docsZip
 }
 
 publishing {
@@ -94,7 +73,7 @@ publishing {
             groupId group
             artifactId project.name
             version project.version
-            //artifact javadocJar
+            artifact javadocJar
             artifact sourcesJar
         }
     }
@@ -105,11 +84,11 @@ bintray {
     key = bintrayApiKey
     publications = ['BintrayRelease']
     pkg {
-        //userOrg = 'cuteclouds'
         repo = 'maven'
         name = project.name
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/adriantodt/HungerGames.git'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/arubot/hg-engine.git'
+        publish = true
         version {
             name = project.version
         }
