@@ -1,13 +1,12 @@
 # HungerGames
 A Hunger Games Simulator Engine made in **Kotlin**.
 
+## Usage
 
-## How to use
-
-1. Create an instance of `pw.aru.hungergames.HungerGamesBuilder` and configurate the match.
+1. Create an instance of `HungerGamesBuilder` and configurate the match.
 
 ```kotlin
-val hungerGames: HungerGames = pw.aru.hungergames.HungerGamesBuilder()
+val hungerGames: HungerGames = HungerGamesBuilder()
     ...
     .build()
 ```
